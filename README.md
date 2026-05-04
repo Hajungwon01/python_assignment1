@@ -1,147 +1,89 @@
-# 🐍 Python Assignment 1
+# Python CLI Data Management System
 
-> 파이썬 기초 개념(제어문, 자료구조, 모듈화, 파일 입출력)을 활용한 실습 프로젝트
+CLI 환경에서 동작하는 간단한 데이터 관리 프로그램입니다.
+학생 성적과 직원 정보를 관리하며, 파일 저장을 통해 데이터를 유지할 수 있습니다.
 
 ---
 
-## 📌 Overview
+## Overview
 
-본 프로젝트는 Python의 핵심 개념을 직접 구현하며 익히기 위한 과제입니다.
+이 프로젝트는 Python의 기본 개념을 활용하여 다음 기능을 구현하는 것을 목표로 합니다.
 
-### ✔ 사용 개념
-
-* 제어문 (while loop)
+* 제어문 (while)
 * 자료구조 (List, Dictionary)
-* 모듈화 (패키지 구조 설계)
+* 모듈화
 * 파일 입출력 (pickle)
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 python_assignment1/
-│
-├─ main.py
-│   └─ 프로그램 실행 및 메뉴 컨트롤러
-│
-├─ loop/
-│   └─ while_mission.py
-│       └─ 성적 관리 프로그램
-│
-└─ fileio/
-    └─ fileio_mission.py
-        └─ 직원 정보 관리 서비스
+├── main.py
+├── loop/
+│   └── while_mission.py
+└── fileio/
+    └── fileio_mission.py
 ```
 
 ---
 
-## ⚙️ Main Module (`main.py`)
+## Features
 
-* `menu()` 함수로 전체 프로그램 흐름 제어
-* 사용자 입력 기반 기능 실행
+### 1. Student Management
 
-| 입력 | 기능         |
-| -- | ---------- |
-| 1  | 성적 관리 프로그램 |
-| 2  | 직원 관리 서비스  |
-| 9  | 프로그램 종료    |
-
-👉 잘못된 입력 시 예외 메시지 출력
-
----
-
-## 📊 Loop Module - 성적 관리 프로그램
-
-📄 `while_mission.py`
-🔧 함수: `sungjuk_process()`
-
-### 🗂 데이터 구조
+* 학생 정보 추가 (학번, 이름, 점수)
+* 인덱스 기반 삭제 (입력 검증 포함)
+* 전체 출력 (while 반복문 사용)
 
 ```python
-sungjuk_list = []
-# [학번, 이름, 점수]
+sungjuk_list = [
+    [student_id, name, score]
+]
 ```
-
-### ✨ 주요 기능
-
-* **추가 (info_add)**
-
-  * 학번, 이름, 점수 입력 → 리스트 저장
-
-* **삭제 (info_remove)**
-
-  * 인덱스 기반 삭제
-  * 데이터 없을 경우 예외 처리
-  * 잘못된 입력 시 재입력 유도
-
-* **출력 (info_print)**
-
-  * while문을 활용한 전체 출력
 
 ---
 
-## 🏢 File I/O Module - 직원 관리 서비스
+### 2. Employee Management
 
-📄 `fileio_mission.py`
-🔧 함수: `emp_process()`
-
-### 🗂 데이터 구조
+* 직원 정보 추가 (사번 포함 8개 항목)
+* 사번 기반 삭제 (유효성 검사 포함)
+* 전체 출력
+* 파일 저장 및 불러오기
 
 ```python
-emp_dict = {}
-# {사번: [직원정보]}
+emp_dict = {
+    emp_id: [employee_info]
+}
 ```
 
-### ✨ 주요 기능
-
-* **직원 추가 (emp_add)**
-
-  * 사번, 이름, 급여, 부서 등 8개 정보 저장
-
-* **직원 삭제 (emp_remove)**
-
-  * 사번 입력 → 삭제
-  * 존재하지 않는 사번 → 재입력
-
-* **전체 출력 (emp_print)**
-
-  * while문 기반 전체 데이터 출력
-
-* **파일 저장 (emp_file_save)**
-
-  ```python
-  pickle.dump()
-  ```
-
-* **파일 불러오기 (emp_file_read)**
-
-  ```python
-  pickle.load()
-  ```
+```python
+pickle.dump()
+pickle.load()
+```
 
 ---
 
-## 🚀 Key Features
+## Key Points
 
-* ✅ 데이터 유효성 검사
-* ✅ 예외 처리 강화
-* ✅ 무한 루프 기반 안정적인 실행
+* 잘못된 입력에 대해 재입력 처리
+* 데이터가 없는 경우 예외 상황 처리
+* 기능별 모듈 분리
+* 파일 기반 데이터 저장 지원
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
-```bash
+```
 python main.py
 ```
 
 ---
 
-## 💡 Notes
+## Notes
 
-* 사용자 입력 기반 CLI 프로그램입니다.
-* 파일 저장 시 `.dat` 형식으로 생성됩니다.
-* 잘못된 입력에도 프로그램이 종료되지 않도록 설계되었습니다.
-
----
+* CLI 기반 프로그램입니다.
+* 데이터는 `.dat` 파일로 저장됩니다.
+* 프로그램 종료 후에도 데이터 유지가 가능합니다.
