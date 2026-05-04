@@ -39,7 +39,7 @@ python_assignment1/
 
 ```python
 sungjuk_list = [
-    [student_id, name, score]
+    [sno, sname, score]
 ]
 ```
 
